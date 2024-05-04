@@ -1,7 +1,9 @@
-<script setup></script>
+<script setup>
+import TheWelcome from '../components/TheWelcome.vue'
+</script>
 
 <template>
   <main>
-    <button type="button">click</button>
+    <TheWelcome />
   </main>
 </template>
