@@ -1,19 +1,25 @@
 <script setup>
-import { ref } from "vue";
-    let count = ref(0)
+const props = defineProps({
+  title: String,
+  prise: Number,
+  isAdded: Boolean,
+})
 
-    function increment(){
-        count.value++
-        console.log(count)
-    }
-    // function updateCount(event){
-    //     count.value = Number(event.target.value)
-    // }
-
+console.log(props)
 </script>
 
 <template>
-    <h1>{{ count }}</h1>
-    <button @click="increment">+</button>
-    <input @keyup.enter="increment"/>
+  <div class="product">
+    <h2>Product:{{ title }}</h2>
+    <h3>Prise:{{ prise }}</h3>
+    <h3>Added:{{ isAdded }}</h3>
+  </div>
 </template>
+
+<style scoped>
+.product {
+  border: 1px solid blue;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+</style>
