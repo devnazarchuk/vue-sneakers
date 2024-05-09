@@ -1,36 +1,25 @@
 <script setup>
+import Header from './components/Header.vue'
 </script>
 
 <template>
-<div
-class="bg-white w-4/5 m-auto h-screen rounded-xl shadow-xl mt-14"
->
-<header class="flex justify-between border-b border-slate-300">
-  <div>
-    <img src="/logo.png" alt="Logo"/>
-      <h2>Vue Sneakers</h2>
-      <p>Shop with the best sneakers</p>
-  </div>
-  <ul>
-    <li>
-      <img src="/cart.svg" alt="Cart"/>
-      <b>1234 usd.</b>
-    </li>
-  </ul>
-  <ul>
-    <li>
-      <img src="/heart.svg" alt="Heart"/>
-      <b>Favorites</b>
-    </li>
-  </ul>
-  <ul>
-    <li>
-      <img src="/profile.svg" alt="Profile"/>
-      <b>Profile</b>
-    </li>
-  </ul>
-</header>
-  <h1>Vue Project</h1>
-</div>
-</template>
+  <div class="bg-white w-4/5 m-auto h-screen rounded-xl shadow-xl mt-14">
+    <Header />
 
+    <div class="">
+      <div class="relative m-10 border border-slate-100 rounded-3xl">
+        <img src="/like-2.svg" alt="Like" class="absolute top-0 left-0"/>
+      </div>
+      <img src="/public/sneakers/sneakers-1.jpg" alt="Sneaker" />
+      <p>Men's Sneakers Nike Blazer Suede</p>
+
+      <div class="flex justify-between">
+        <div class="flex flex-col">
+          <span class="text-slate-400">Prise:</span>
+          <span>100$</span>
+        </div>
+        <img src="/public/plus.svg" alt="Plus" class="absolute top-0 left-0">
+      </div>
+    </div>
+  </div>
+</template>
