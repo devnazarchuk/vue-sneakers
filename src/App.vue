@@ -7,18 +7,18 @@ import Header from './components/Header.vue'
     <Header />
 
     <div class="">
-      <div class="relative m-10 border border-slate-100 rounded-3xl">
-        <img src="/like-2.svg" alt="Like" class="absolute top-0 left-0"/>
-      </div>
-      <img src="/public/sneakers/sneakers-1.jpg" alt="Sneaker" />
-      <p>Men's Sneakers Nike Blazer Suede</p>
+      <div class="relative m-10 border border-slate-100 rounded-3xl cursor-pointer hover:translate-y-[-2px] hover:shadow-xl">
+        <img src="/like-2.svg" alt="Like" class="absolute top-0 left-0" />
+        <img src="/sneakers/sneakers-1.jpg" alt="Sneaker" />
+        <p>Men's Sneakers Nike Blazer Suede</p>
 
-      <div class="flex justify-between">
-        <div class="flex flex-col">
-          <span class="text-slate-400">Prise:</span>
-          <span>100$</span>
+        <div class="flex justify-between">
+          <div class="flex flex-col">
+            <span class="text-slate-400">Prise:</span>
+            <b>100$</b>
+          </div>
+          <img src="/plus.svg" alt="Plus"/>
         </div>
-        <img src="/public/plus.svg" alt="Plus" class="absolute top-0 left-0">
       </div>
     </div>
   </div>
