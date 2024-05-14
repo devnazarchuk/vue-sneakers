@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref } from 'vue'
+import { onMounted, reactive, ref, watch } from 'vue'
 import axios from 'axios'
 import Header from './components/Header.vue'
 import CardList from './components/CardList.vue'
@@ -7,16 +7,32 @@ import CardList from './components/CardList.vue'
 
 const items = ref([])
 
-onMounted(async() => {
-try {
-  const {data} = await axios.get('https://ea24319fe3196523.mokky.dev/items')
-  items.value = data;
-}
-catch (err) {
-  console.log (err)
-}
+const filters = reactive({
+  sortBy: '',
+  searchQuery: ''
 })
+const onChangeSelect = (event) => {
+  filters.sortBy = event.target.value
+}
 
+onMounted(async () => {
+  try {
+    const { data } = await axios.get('https://ea24319fe3196523.mokky.dev/items')
+    items.value = data
+  } catch (err) {
+    console.log(err)
+  }
+})
+watch(filters, async () => {
+  try {
+    const { data } = await axios.get(
+      'https://ea24319fe3196523.mokky.dev/items?sortBy=' + filters.sortBy
+    )
+    items.value = data
+  } catch (err) {
+    console.log(err)
+  }
+})
 </script>
 
 <template>
@@ -27,11 +43,10 @@ catch (err) {
       <div class="flex justify-between items-center">
         <h2 class="text-3xl font-bold mb-8">Sneakers for every occassion</h2>
         <div class="flex gap-4">
-          <select class="py-2 px-3 border rounded-md outline-none">
-            <option>Filter by name</option>
-            <option>Filter by price(exspensive)</option>
-            <option>Filter by price(cheap)</option>
-            <option>Filter by brand</option>
+          <select @change="onChangeSelect" class="py-2 px-3 border rounded-md outline-none">
+            <option value="name">Filter by name</option>
+            <option value="price">Filter by price(cheap)</option>
+            <option value="-price">Filter by price(exspensive)</option>
           </select>
           <div class="relative">
             <img class="absolute left-4 top-3" src="/search.svg" />
