@@ -1,18 +1,22 @@
 <script setup>
-import { onMounted } from 'vue'
+import { onMounted, ref } from 'vue'
 import axios from 'axios'
 import Header from './components/Header.vue'
 import CardList from './components/CardList.vue'
 // import Drawer from './components/Drawer.vue'
 
-onMounted(() => {
-  // fetch('https://ea24319fe3196523.mokky.dev/items')
-  // .then (response => response.json())
-  // .then(data => console.log(data))
-  axios.get('https://ea24319fe3196523.mokky.dev/items').then((response) => {
-    console.log(response.data)
-  })
+const items = ref([])
+
+onMounted(async() => {
+try {
+  const {data} = await axios.get('https://ea24319fe3196523.mokky.dev/items')
+  items.value = data;
+}
+catch (err) {
+  console.log (err)
+}
 })
+
 </script>
 
 <template>
