@@ -8,31 +8,34 @@ import CardList from './components/CardList.vue'
 const items = ref([])
 
 const filters = reactive({
-  sortBy: '',
+  sortBy: 'title',
   searchQuery: ''
 })
 const onChangeSelect = (event) => {
   filters.sortBy = event.target.value
 }
+const onChangeSearchInput = (event) => {
+  filters.searchQuery = event.target.value
+}
+const fetchItems = async () => {
+  try {
+    const params = {
+      sortBy: filters.sortBy
+    }
 
-onMounted(async () => {
-  try {
-    const { data } = await axios.get('https://ea24319fe3196523.mokky.dev/items')
+    if (filters.searchQuery) {
+      params.title = `*${filters.searchQuery}*`
+    }
+
+    const { data } = await axios.get(`https://ea24319fe3196523.mokky.dev/items`,
+     { params })
     items.value = data
   } catch (err) {
     console.log(err)
   }
-})
-watch(filters, async () => {
-  try {
-    const { data } = await axios.get(
-      'https://ea24319fe3196523.mokky.dev/items?sortBy=' + filters.sortBy
-    )
-    items.value = data
-  } catch (err) {
-    console.log(err)
-  }
-})
+}
+onMounted(fetchItems)
+watch(filters, fetchItems)
 </script>
 
 <template>
@@ -42,15 +45,18 @@ watch(filters, async () => {
     <div class="p-10">
       <div class="flex justify-between items-center">
         <h2 class="text-3xl font-bold mb-8">Sneakers for every occassion</h2>
+
         <div class="flex gap-4">
           <select @change="onChangeSelect" class="py-2 px-3 border rounded-md outline-none">
             <option value="name">Filter by name</option>
             <option value="price">Filter by price(cheap)</option>
             <option value="-price">Filter by price(exspensive)</option>
           </select>
+
           <div class="relative">
             <img class="absolute left-4 top-3" src="/search.svg" />
             <input
+              @input="onChangeSearchInput"
               type="text"
               class="border rounded-md py-2 pl-11 pr-4 outline-none focus:border-gray-400"
               placeholder="Search"
