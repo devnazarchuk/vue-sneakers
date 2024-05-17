@@ -1,13 +1,15 @@
 <script setup>
 defineProps({
+  id: Number,
   imageUrl: String,
   title: String,
   prise: Number,
   isFavorite: Boolean,
   isAdded: Boolean,
-  onClickAdd: Function,
-  onClickFavorite: Function
+  onClickFavorite: Function,
+  onClickAdd: Function
 })
+
 </script>
 <template>
   <div
@@ -26,7 +28,7 @@ defineProps({
     <div class="flex justify-between mt-5">
       <div class="flex flex-col">
         <span class="text-slate-400">Prise:</span>
-        <b>{{ prise }}$</b>
+        <b>{{ prise }}₴</b>
       </div>
       <img @click="onClickAdd" :src="isAdded ? '/checked.svg' : '/plus.svg'" alt="Plus" />
     </div>

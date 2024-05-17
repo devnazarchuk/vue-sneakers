@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, reactive, ref, watch } from 'vue'
+import { onMounted, reactive, ref, provide, watch } from 'vue'
 import axios from 'axios'
 import Header from './components/Header.vue'
 import CardList from './components/CardList.vue'
@@ -37,6 +37,10 @@ const fetchFavorites = async () => {
     console.log(err)
   }
 }
+const addToFavorite = async (item) => {
+  item.isFavorite = !item.isFavorite,
+  console.log(item);
+}
 const fetchItems = async () => {
   try {
     const params = {
@@ -62,6 +66,8 @@ onMounted(async () => {
   await fetchFavorites()
 })
 watch(filters, fetchItems)
+
+provide("addToFavorite", addToFavorite) 
 </script>
 
 <template>
@@ -91,7 +97,7 @@ watch(filters, fetchItems)
         </div>
       </div>
       <div class="mt-10">
-        <CardList :items="items" />
+        <CardList :items="items" @addToFavorite="addToFavorite"/>
       </div>
     </div>
   </div>

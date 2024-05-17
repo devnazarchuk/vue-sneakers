@@ -4,7 +4,7 @@
     <div class="flex flex-col">
       <p>Nike Air Force 270</p>
       <div class="flex justify-between mt-2">
-        <b>1234 $</b>
+        <b>0000 ₴</b>
         <img class="opacity-40 hover:opacity-100 cursor-pointer transition" src="/close.svg" />
       </div>
     </div>
