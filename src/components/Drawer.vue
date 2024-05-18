@@ -1,6 +1,13 @@
 <script setup>
 import DrawerHead from './DrawerHead.vue'
 import CardItemList from './CardItemList.vue'
+import { computed } from 'vue'
+const emit = defineEmits(['createOrder'])
+const props = defineProps({
+  totalPrise: Number,
+  vatPrise: Number,
+  buttonDisabled: Boolean
+})
 </script>
 <template>
   <div class="fixed top-0 left-0 w-full h-full bg-black z-10 opacity-70"></div>
@@ -12,19 +19,20 @@ import CardItemList from './CardItemList.vue'
       <div class="flex gap-2">
         <span>Subtotal:</span>
         <div class="flex-1 border-b border-dashed"></div>
-        <b>1234 $</b>
+        <b>{{ totalPrise }}$</b>
       </div>
 
       <div class="flex gap-2">
         <span>Fee 5%:</span>
         <div class="flex-1 border-b border-dashed"></div>
-        <b>52 $</b>
+        <b>{{ vatPrise }}$</b>
       </div>
       <button
-        disabled=""
+        :disabled="buttonDisabled"
+        @click="() => emit('createOrder')"
         class="mt-4 bg-lime-500 w-full py-3 rounded-xl text-white disabled:bg-slate-300 hover:bg-lime-600 active:bg-lime-700 transition cursor-pointer"
       >
-        Checkout
+        <b>Checkout</b>
       </button>
     </div>
   </div>

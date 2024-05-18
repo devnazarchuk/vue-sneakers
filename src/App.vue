@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, reactive, ref, provide, watch } from 'vue'
+import { onMounted, reactive, ref, provide, watch, computed } from 'vue'
 import axios from 'axios'
 import Drawer from './components/Drawer.vue'
 import Header from './components/Header.vue'
@@ -7,7 +7,14 @@ import CardList from './components/CardList.vue'
 
 const items = ref([])
 const cart = ref([])
+const isCreatingOrder = ref(false)
 const drawerOpen = ref(false)
+
+const totalPrise = computed(() => cart.value.reduce((acc, item) => acc + item.price, 0))
+const vatPrise = computed(() => Math.round(totalPrise.value * 5) / 100)
+const cartButtonDisabled = computed(()=>isCreatingOrder.value || cartIsEmpty.value);
+const cartIsEmpty = computed(() => cart.value.length === 0);
+
 const closeDrawer = () => {
   drawerOpen.value = false
 }
@@ -27,11 +34,26 @@ const removeFromCart = (item) => {
   item.isAdded = false
   cart.value.splice(cart.value.indexOf(item), 1)
 }
+const createOrder = async () => {
+  try {
+    isCreatingOrder.value = true
+    const { data } = await axios.post('https://ea24319fe3196523.mokky.dev/orders', {
+      items: cart.value,
+      totalPrise: totalPrise.value
+    })
+    cart.value = []
+    return data
+  } catch (err) {
+    console.log(err)
+  } finally {
+    isCreatingOrder.value = false
+  }
+}
 const onClickAddPlus = (item) => {
   if (!item.isAdded) {
-    addToCart(item);
+    addToCart(item)
   } else {
-    removeFromCart(item);
+    removeFromCart(item)
   }
   console.log(cart)
 }
@@ -107,20 +129,33 @@ onMounted(async () => {
   await fetchFavorites()
 })
 watch(filters, fetchItems)
+watch (cart ,()=>{
+  items.value = items.value.map((item) => ({
+    ...item,
+    isAdded: false
+
+  }))
+})
 
 provide('cart', {
   cart,
   closeDrawer,
   openDrawer,
   addToCart,
-  removeFromCart,
+  removeFromCart
 })
 </script>
 
 <template>
-  <Drawer v-if="drawerOpen" />
+  <Drawer
+    v-if="drawerOpen"
+    :total-prise="totalPrise"
+    :vat-prise="vatPrise"
+    @create-order="createOrder"
+    :button-disabled="cartButtonDisabled"
+  />
   <div class="bg-white w-4/5 m-auto rounded-xl shadow-xl mt-14">
-    <Header @open-drawer="openDrawer" />
+    <Header :total-prise="totalPrise" @open-drawer="openDrawer" />
     <div class="p-10">
       <div class="flex justify-between items-center">
         <h2 class="text-3xl font-bold mb-8">Sneakers for every occassion</h2>
