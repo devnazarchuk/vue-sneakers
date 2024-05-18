@@ -1,16 +1,40 @@
 <script setup>
 import { onMounted, reactive, ref, provide, watch } from 'vue'
 import axios from 'axios'
+import Drawer from './components/Drawer.vue'
 import Header from './components/Header.vue'
 import CardList from './components/CardList.vue'
-// import Drawer from './components/Drawer.vue'
 
 const items = ref([])
+const cart = ref([])
+const drawerOpen = ref(false)
+const closeDrawer = () => {
+  drawerOpen.value = false
+}
+const openDrawer = () => {
+  drawerOpen.value = true
+}
 
 const filters = reactive({
   sortBy: 'title',
   searchQuery: ''
 })
+const addToCart = (item) => {
+  item.isAdded = true
+  cart.value.push(item)
+}
+const removeFromCart = (item) => {
+  item.isAdded = false
+  cart.value.splice(cart.value.indexOf(item), 1)
+}
+const onClickAddPlus = (item) => {
+  if (!item.isAdded) {
+    addToCart(item);
+  } else {
+    removeFromCart(item);
+  }
+  console.log(cart)
+}
 const onChangeSelect = (event) => {
   filters.sortBy = event.target.value
 }
@@ -43,15 +67,14 @@ const addToFavorite = async (item) => {
       const obj = {
         parentId: item.id
       }
-      item.isFavorite = true;
+      item.isFavorite = true
       const { data } = await axios.post(`https://ea24319fe3196523.mokky.dev/favorites`, obj)
-      item.favoriteId = data.id;
+      item.favoriteId = data.id
       console.log(data)
-    }
-    else {
-      item.isFavorite = false;
+    } else {
+      item.isFavorite = false
       await axios.delete(`https://ea24319fe3196523.mokky.dev/favorites/${item.favoriteId}`)
-      item.favoriteId = null;
+      item.favoriteId = null
     }
   } catch (err) {
     console.log(err)
@@ -85,13 +108,19 @@ onMounted(async () => {
 })
 watch(filters, fetchItems)
 
-provide('addToFavorite', addToFavorite)
+provide('cart', {
+  cart,
+  closeDrawer,
+  openDrawer,
+  addToCart,
+  removeFromCart,
+})
 </script>
 
 <template>
-  <!-- <Drawer /> -->
+  <Drawer v-if="drawerOpen" />
   <div class="bg-white w-4/5 m-auto rounded-xl shadow-xl mt-14">
-    <Header />
+    <Header @open-drawer="openDrawer" />
     <div class="p-10">
       <div class="flex justify-between items-center">
         <h2 class="text-3xl font-bold mb-8">Sneakers for every occassion</h2>
@@ -115,7 +144,7 @@ provide('addToFavorite', addToFavorite)
         </div>
       </div>
       <div class="mt-10">
-        <CardList :items="items" @addToFavorite="addToFavorite" />
+        <CardList :items="items" @add-to-favorite="addToFavorite" @add-to-cart="onClickAddPlus" />
       </div>
     </div>
   </div>
