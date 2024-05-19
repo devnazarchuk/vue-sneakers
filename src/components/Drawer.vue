@@ -4,7 +4,7 @@ import CardItemList from './CardItemList.vue'
 import InfoBlock from './InfoBlock.vue'
 // import { computed } from 'vue'
 const emit = defineEmits(['createOrder'])
-const props = defineProps({
+defineProps({
   totalPrise: Number,
   vatPrise: Number,
   buttonDisabled: Boolean

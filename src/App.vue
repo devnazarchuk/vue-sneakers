@@ -46,8 +46,8 @@ const createOrder = async () => {
 watch(
   cart,
   () => {
-    localStorage.setItem('cart', JSON.stringify(cart.value))
-  },
+    if ( typeof window !== "undefined" ){localStorage.setItem('cart', JSON.stringify(cart.value))
+  }},
   { deep: true }
 )
 provide('cart', {
