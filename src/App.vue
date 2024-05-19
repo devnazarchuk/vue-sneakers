@@ -9,8 +9,8 @@ const cart = ref([])
 const isCreatingOrder = ref(false)
 const isDrawerOpened = ref(false)
 
-const totalPrise = computed(() => cart.value.reduce((acc, item) => acc + item.price, 0))
-const vatPrise = computed(() => Math.round(totalPrise.value * 5) / 100)
+const totalPrice = computed(() => cart.value.reduce((acc, item) => acc + item.price, 0))
+const vatPrice = computed(() => Math.round(totalPrice.value * 5) / 100)
 const cartButtonDisabled = computed(() => isCreatingOrder.value || cartIsEmpty.value)
 const cartIsEmpty = computed(() => cart.value.length === 0)
 
@@ -33,7 +33,7 @@ const createOrder = async () => {
     isCreatingOrder.value = true
     const { data } = await axios.post('https://ea24319fe3196523.mokky.dev/orders', {
       items: cart.value,
-      totalPrise: totalPrise.value
+      totalPrice: totalPrice.value
     })
     cart.value = []
     return data
@@ -46,8 +46,8 @@ const createOrder = async () => {
 watch(
   cart,
   () => {
-    if ( typeof window !== "undefined" ){localStorage.setItem('cart', JSON.stringify(cart.value))
-  }},
+    localStorage.setItem('cart', JSON.stringify(cart.value))
+  },
   { deep: true }
 )
 provide('cart', {
@@ -63,13 +63,13 @@ provide('cart', {
 <template>
   <Drawer
     v-if="isDrawerOpened"
-    :total-prise="totalPrise"
-    :vat-prise="vatPrise"
+    :total-price="totalPrice"
+    :vat-price="vatPrice"
     @create-order="createOrder"
     :button-disabled="cartButtonDisabled"
   />
   <div class="bg-white w-4/5 m-auto rounded-xl shadow-xl mt-14">
-    <Header :total-prise="totalPrise" @open-drawer="openDrawer" />
+    <Header :total-price="totalPrice" @open-drawer="openDrawer" />
     <div class="p-10">
       <router-view></router-view>
     </div>
