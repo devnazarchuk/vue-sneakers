@@ -1,6 +1,6 @@
 <script setup>
 defineProps({
-  totalPrise: Number
+  totalPrice: Number
 })
 
 const emit = defineEmits(['openDrawer'])
@@ -23,7 +23,7 @@ const emit = defineEmits(['openDrawer'])
         class="flex items-center gap-3 cursor-pointer text-gray-500 hover:text-black"
       >
         <img src="/cart.svg" alt="Cart" />
-        <span>{{ totalPrise }}$</span>
+        <span>{{ totalPrice }}$</span>
       </li>
       <router-link to="/favorites">
         <li class="flex items-center gap-3 cursor-pointer text-gray-500 hover:text-black">
