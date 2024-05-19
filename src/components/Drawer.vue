@@ -2,7 +2,7 @@
 import DrawerHead from './DrawerHead.vue'
 import CardItemList from './CardItemList.vue'
 import InfoBlock from './InfoBlock.vue'
-import { computed } from 'vue'
+// import { computed } from 'vue'
 const emit = defineEmits(['createOrder'])
 const props = defineProps({
   totalPrise: Number,

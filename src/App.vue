@@ -12,8 +12,8 @@ const drawerOpen = ref(false)
 
 const totalPrise = computed(() => cart.value.reduce((acc, item) => acc + item.price, 0))
 const vatPrise = computed(() => Math.round(totalPrise.value * 5) / 100)
-const cartButtonDisabled = computed(()=>isCreatingOrder.value || cartIsEmpty.value);
-const cartIsEmpty = computed(() => cart.value.length === 0);
+const cartButtonDisabled = computed(() => isCreatingOrder.value || cartIsEmpty.value)
+const cartIsEmpty = computed(() => cart.value.length === 0)
 
 const closeDrawer = () => {
   drawerOpen.value = false
@@ -127,7 +127,7 @@ const fetchItems = async () => {
 onMounted(async () => {
   const localCart = localStorage.getItem('cart')
   if (localCart) {
-    cart.value = localCart? JSON.parse(localCart): [];
+    cart.value = localCart ? JSON.parse(localCart) : []
   }
   await fetchItems()
   await fetchFavorites()
@@ -137,17 +137,18 @@ onMounted(async () => {
   }))
 })
 watch(filters, fetchItems)
-watch (cart ,()=>{
+watch(cart, () => {
   items.value = items.value.map((item) => ({
     ...item,
     isAdded: false
-
   }))
 })
-watch(cart, () => {
-  localStorage.setItem('cart', JSON.stringify(cart.value))
-},
-  {deep: true}
+watch(
+  cart,
+  () => {
+    localStorage.setItem('cart', JSON.stringify(cart.value))
+  },
+  { deep: true }
 )
 provide('cart', {
   cart,
