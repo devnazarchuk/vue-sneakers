@@ -5,7 +5,6 @@ import { inject } from 'vue'
 import CardList from '../components/CardList.vue'
 const { cart, addToCart, removeFromCart } = inject('cart')
 const items = ref([])
-const ServerUrl = 'https://ea24319fe3196523.mokky.dev'
 const filters = reactive({
   sortBy: 'title',
   searchQuery: ''
@@ -47,7 +46,7 @@ const addToFavorite = async (item) => {
 
 const fetchFavorites = async () => {
   try {
-    const { data: favorites } = await axios.get(`${ServerUrl}/favorites`)
+    const { data: favorites } = await axios.get(`https://ea24319fe3196523.mokky.dev/favorites`)
     items.value = items.value.map((item) => {
       const favorite = favorites.find((favorite) => favorite.parentId === item.id)
 
@@ -75,7 +74,7 @@ const fetchItems = async () => {
       params.title = `*${filters.searchQuery}*`
     }
 
-    const { data } = await axios.get(`${ServerUrl}/items`, { params })
+    const { data } = await axios.get(`https://ea24319fe3196523.mokky.dev/items`, { params })
     items.value = data.map((obj) => ({
       ...obj,
       isFavorite: false,
