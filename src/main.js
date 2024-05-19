@@ -9,7 +9,7 @@ import Favorites from './pages/Favorites.vue'
 const app = createApp(App)
 const routes = [
     {
-        path: '/',
+        path: '/vue-sneakers',
         name: 'Home',
         component: Home
     },
