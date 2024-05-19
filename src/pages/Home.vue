@@ -3,8 +3,6 @@ import { reactive, watch, ref, onMounted } from 'vue'
 import axios from 'axios'
 import { inject } from 'vue'
 import CardList from '../components/CardList.vue'
-
-
 const { cart, addToCart, removeFromCart } = inject('cart')
 const items = ref([])
 const filters = reactive({

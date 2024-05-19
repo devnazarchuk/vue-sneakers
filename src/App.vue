@@ -7,7 +7,7 @@ import Header from './components/Header.vue'
 /*Cart*(START)*/
 const cart = ref([])
 const isCreatingOrder = ref(false)
-const drawerOpen = ref(false)
+const isDrawerOpened = ref(false)
 
 const totalPrise = computed(() => cart.value.reduce((acc, item) => acc + item.price, 0))
 const vatPrise = computed(() => Math.round(totalPrise.value * 5) / 100)
@@ -15,10 +15,10 @@ const cartButtonDisabled = computed(() => isCreatingOrder.value || cartIsEmpty.v
 const cartIsEmpty = computed(() => cart.value.length === 0)
 
 const closeDrawer = () => {
-  drawerOpen.value = false
+  isDrawerOpened.value = false
 }
 const openDrawer = () => {
-  drawerOpen.value = true
+  isDrawerOpened.value = true
 }
 const addToCart = (item) => {
   item.isAdded = true
@@ -62,7 +62,7 @@ provide('cart', {
 
 <template>
   <Drawer
-    v-if="drawerOpen"
+    v-if="isDrawerOpened"
     :total-prise="totalPrise"
     :vat-prise="vatPrise"
     @create-order="createOrder"
