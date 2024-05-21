@@ -3,7 +3,7 @@ import { reactive, watch, ref, onMounted } from 'vue'
 import axios from 'axios'
 import { inject } from 'vue'
 import CardList from '../components/CardList.vue'
-const { cart, addToCart, removeFromCart } = inject('cart')
+const { cart, addToCart,removeFromCart } = inject('cart')
 const items = ref([])
 const filters = reactive({
   sortBy: 'title',
@@ -33,7 +33,7 @@ const addToFavorite = async (item) => {
       item.isFavorite = true
       const { data } = await axios.post(`https://ea24319fe3196523.mokky.dev/favorites`, obj)
       item.favoriteId = data.id
-      console.log(data)
+      console.log(data.value)
     } else {
       item.isFavorite = false
       await axios.delete(`https://ea24319fe3196523.mokky.dev/favorites/${item.favoriteId}`)
