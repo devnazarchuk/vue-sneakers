@@ -68,10 +68,17 @@ provide('cart', {
     @create-order="createOrder"
     :button-disabled="cartButtonDisabled"
   />
-  <div class="bg-white w-4/5 m-auto rounded-xl shadow-xl mt-14">
+  <div class="bg-white w-4/5 m-auto rounded-xl shadow-xl mt-14 w-full">
     <Header :total-price="totalPrice" @open-drawer="openDrawer" />
     <div class="p-10">
       <router-view></router-view>
     </div>
   </div>
 </template>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poetsen+One&family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&display=swap');
+* {
+  font-family: 'Poetsen One', sans-serif;
+  font-weight: 500;
+}
+</style>

@@ -24,12 +24,12 @@ const visibleFavoriteButton = Boolean(props.onClickFavorite)
       @click="onClickFavorite"
     />
     <img :src="imageUrl" />
-    <p class="m-2">{{ title }}</p>
+    <p class="m-2 textSize">{{ title }}</p>
 
     <div class="flex justify-between mt-5">
       <div class="flex flex-col">
         <span class="text-slate-400">Price:</span>
-        <b>{{ price }}$</b>
+        <b class="textSize">{{ price }}$</b>
       </div>
       <img
         v-if="onClickFavorite"
@@ -40,3 +40,11 @@ const visibleFavoriteButton = Boolean(props.onClickFavorite)
     </div>
   </div>
 </template>
+<style scoped>
+@media screen and (max-width: 1440px) {
+  .textSize{
+    font-size: 22px;
+  }
+  
+}
+</style>
