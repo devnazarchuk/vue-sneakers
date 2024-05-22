@@ -1,5 +1,5 @@
 <script setup>
-const props=defineProps({
+const props = defineProps({
   id: Number,
   imageUrl: String,
   title: String,
@@ -29,9 +29,14 @@ const visibleFavoriteButton = Boolean(props.onClickFavorite)
     <div class="flex justify-between mt-5">
       <div class="flex flex-col">
         <span class="text-slate-400">Price:</span>
-        <b>{{ price }}₴</b>
+        <b>{{ price }}$</b>
       </div>
-      <img v-if="onClickFavorite" @click="onClickAdd" :src="isAdded ? '/checked.svg' : '/plus.svg'" alt="Plus" />
+      <img
+        v-if="onClickFavorite"
+        @click="onClickAdd"
+        :src="isAdded ? '/checked.svg' : '/plus.svg'"
+        alt="Plus"
+      />
     </div>
   </div>
 </template>
