@@ -3,7 +3,7 @@ import { reactive, watch, ref, onMounted } from 'vue'
 import axios from 'axios'
 import { inject } from 'vue'
 import CardList from '../components/CardList.vue'
-const { cart, addToCart,removeFromCart } = inject('cart')
+const { cart, addToCart, removeFromCart } = inject('cart')
 const items = ref([])
 const filters = reactive({
   sortBy: 'title',
@@ -107,10 +107,10 @@ watch(filters, fetchItems)
 </script>
 
 <template>
-  <div class="flex justify-between items-center flex-wrap">
+  <div class="Mesh flex justify-between items-center flex-wrap">
     <h2 class="text-3xl font-bold mb-8">Sneakers for every occassion</h2>
 
-    <div class="flex gap-4 flex-wrap">
+    <div class="flex gap-4 flex-wrap Mesh">
       <select @change="onChangeSelect" class="py-2 px-3 border rounded-md outline-none">
         <option value="name">Filter by name</option>
         <option value="price">Filter by price(cheap)</option>
@@ -133,3 +133,10 @@ watch(filters, fetchItems)
     <CardList :items="items" @add-to-favorite="addToFavorite" @add-to-cart="onClickAddPlus" />
   </div>
 </template>
+<style>
+@media screen and (max-width: 1024px) {
+  .Mesh {
+    justify-content: center;
+  }
+}
+</style>
