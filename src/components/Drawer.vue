@@ -54,4 +54,15 @@ defineProps({
   height: 600px; 
   overflow-y: scroll; 
 }
+.element::-webkit-scrollbar {
+    width: 0;
+}
+
+.element {
+    -ms-overflow-style: none;
+}
+
+.element {
+    overflow: -moz-scrollbars-none;
+}
 </style>
