@@ -39,9 +39,5 @@ const emit = defineEmits(['openDrawer'])
   </header>
 </template>
 <style>
-@media screen and (max-width: 768px) {
-  .Mesh {
-    justify-content: center;
-  }
-}
+
 </style>

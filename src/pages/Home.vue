@@ -107,7 +107,7 @@ watch(filters, fetchItems)
 </script>
 
 <template>
-  <div class="Mesh flex justify-between items-center flex-wrap">
+  <div class="Mesh flex justify-between items-center flex-wrap items-baseline">
     <h2 class="text-3xl font-bold mb-8">Sneakers for every occassion</h2>
 
     <div class="flex gap-4 flex-wrap Mesh">
@@ -134,9 +134,13 @@ watch(filters, fetchItems)
   </div>
 </template>
 <style>
+.Mesh {
+  justify-content: space-between;
+}
 @media screen and (max-width: 1024px) {
   .Mesh {
-    justify-content: center;
+    justify-content: space-evenly;
   }
+
 }
 </style>
