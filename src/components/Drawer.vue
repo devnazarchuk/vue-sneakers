@@ -22,8 +22,8 @@ defineProps({
       imageUrl="/package-icon.png"
     />
   </div>
-  <div v-else>
-    <CardItemList class="scrollermenu"/>
+  <div class="scrollermenu" v-else>
+    <CardItemList/>
 
     <div class="flex flex-col gap-4 my-7">
       <div class="flex gap-2">
