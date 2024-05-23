@@ -23,7 +23,7 @@ defineProps({
     />
   </div>
   <div v-else>
-    <CardItemList/>
+    <CardItemList class="scrollermenu"/>
 
     <div class="flex flex-col gap-4 my-7">
       <div class="flex gap-2">
@@ -48,3 +48,10 @@ defineProps({
   </div>
   </div>
 </template>
+<style scoped>
+.scrollermenu {
+  width: 100%; 
+  height: 600px; 
+  overflow-y: scroll; 
+}
+</style>

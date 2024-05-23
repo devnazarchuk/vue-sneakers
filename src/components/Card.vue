@@ -47,4 +47,5 @@ const visibleFavoriteButton = Boolean(props.onClickFavorite)
   }
   
 }
+
 </style>
