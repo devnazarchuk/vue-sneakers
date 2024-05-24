@@ -9,7 +9,10 @@ const cart = ref([])
 const isCreatingOrder = ref(false)
 const isDrawerOpened = ref(false)
 
-const totalPrice = computed(() => cart.value.reduce((acc, item) => acc + item.price, 0))
+const totalPrice = computed(() => 
+  cart.value.filter(item => item !== null && item !== undefined)
+            .reduce((acc, item) => acc + item.price, 0)
+);
 const vatPrice = computed(() => Math.round(totalPrice.value * 5) / 100)
 const cartButtonDisabled = computed(() => isCreatingOrder.value || cartIsEmpty.value)
 const cartIsEmpty = computed(() => cart.value.length === 0)

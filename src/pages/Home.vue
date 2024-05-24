@@ -94,7 +94,7 @@ onMounted(async () => {
   await fetchFavorites()
   items.value = items.value.map((item) => ({
     ...item,
-    isAdded: cart.value.some((cartItem) => cartItem.id === item.id)
+    isAdded: cart.value.some((cartItem) => cartItem && cartItem.id === item.id)
   }))
 })
 watch(cart, () => {
