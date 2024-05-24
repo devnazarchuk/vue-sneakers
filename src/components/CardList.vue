@@ -10,7 +10,7 @@ const emit = defineEmits(['addToFavorite', 'addToCart'])
 <template>
   <div class="Mesh grid grid-cols-4 gap-5 " v-auto-animate>
     <Card
-      v-for="item in items"
+      v-for="item in items.filter(item => item !== undefined)"
       :key="item.id"
       :id="item.id"
       :title="item.title"
