@@ -7,12 +7,12 @@ const emit = defineEmits(['openDrawer'])
 </script>
 
 <template>
-  <header class="Mesh flex justify-between border-b border-slate-100 px-10 py-8 flex-wrap">
+  <header class="Mesh flex justify-between border-b border-slate-100 px-10 py-4 flex-wrap">
     <router-link to="/">
       <div class="flex items-center gap-4 h-full">
         <img src="/public/favicon_logo/android-chrome-512x512.png" alt="Logo" class="w-16" />
         <div>
-          <h2 class="text-xl font-bold uppercase">Vue Sneakers</h2>
+          <h2 class="text-xl font-bold uppercase">✨Vue Sneakers✨</h2>
           <p class="text-slate-400">Shop with the best sneakers</p>
         </div>
       </div></router-link
@@ -31,10 +31,12 @@ const emit = defineEmits(['openDrawer'])
           <span>Favorites</span>
         </li></router-link
       >
+      <router-link to="/orders">
       <li class="flex items-center gap-3 cursor-pointer text-gray-500 hover:text-black">
         <img src="/profile.svg" alt="Profile" />
         <span>Profile</span>
       </li>
+      </router-link>
     </ul>
   </header>
 </template>
