@@ -108,10 +108,10 @@ watch(filters, fetchItems)
 
 <template>
   <div class="Mesh flex justify-between items-center flex-wrap items-baseline">
-    <h2 class="text-3xl font-bold mb-8">Sneakers for every occassion</h2>
+    <h2 class="text-3xl font-bold mb-8 text-center">Sneakers for every occassion</h2>
 
     <div class="flex gap-4 flex-wrap Mesh">
-      <select @change="onChangeSelect" class="py-2 px-3 border rounded-md outline-none">
+      <select @change="onChangeSelect" class="py-2 px-3 border rounded-xl outline-none">
         <option value="name">Filter by name</option>
         <option value="price">Filter by price(cheap)</option>
         <option value="-price">Filter by price(exspensive)</option>
@@ -122,7 +122,7 @@ watch(filters, fetchItems)
         <input
           @input="onChangeSearchInput"
           type="text"
-          class="border rounded-md py-2 pl-9 pr-4 outline-none focus:border-gray-400"
+          class="border rounded-xl py-2 pl-9 pr-4 outline-none focus:border-gray-400"
           placeholder="Search"
         />
       </div>

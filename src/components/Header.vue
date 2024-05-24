@@ -10,7 +10,7 @@ const emit = defineEmits(['openDrawer'])
   <header class="Mesh flex justify-between border-b border-slate-100 px-10 py-8 flex-wrap">
     <router-link to="/">
       <div class="flex items-center gap-4 h-full">
-        <img src="/logo.png" alt="Logo" class="w-10" />
+        <img src="/public/favicon_logo/android-chrome-512x512.png" alt="Logo" class="w-16" />
         <div>
           <h2 class="text-xl font-bold uppercase">Vue Sneakers</h2>
           <p class="text-slate-400">Shop with the best sneakers</p>

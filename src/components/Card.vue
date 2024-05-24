@@ -24,9 +24,9 @@ const visibleFavoriteButton = Boolean(props.onClickFavorite)
       @click="onClickFavorite"
     />
     <img :src="imageUrl" />
-    <p class="m-2 textSize">{{ title }}</p>
+    <p class="m-2 textSize text-center">{{ title }}</p>
 
-    <div class="flex justify-between mt-5">
+    <div class="flex justify-between mt-5 items-end">
       <div class="flex flex-col">
         <span class="text-slate-400">Price:</span>
         <b class="textSize">{{ price }}$</b>

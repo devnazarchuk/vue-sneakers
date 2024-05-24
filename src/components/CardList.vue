@@ -24,6 +24,9 @@ const emit = defineEmits(['addToFavorite', 'addToCart'])
   </div>
 </template>
 <style scoped>
+  .Mesh {
+    justify-content: center;
+  }
 @media screen and (max-width: 1440px) {
   .Mesh {
     grid-template-columns: 1fr 1fr 1fr 1fr;

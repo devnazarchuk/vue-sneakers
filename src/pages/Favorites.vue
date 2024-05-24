@@ -16,6 +16,23 @@ onMounted(async () => {
 })
 </script>
 <template>
-  <h1>Favorites</h1>
-  <CardList :items="favorites" is-favorites />
+  <h1 class="text-3xl font-bold mb-8">My favorites:</h1>
+  <CardList :items="favorites" is-favorites class="scrollermenu"/>
 </template>
+<style scoped>
+.scrollermenu {
+  width: 100%; 
+  overflow-y: scroll; 
+}
+.scrollermenu::-webkit-scrollbar {
+    width: 0;
+}
+
+.scrollermenu {
+    -ms-overflow-style: none;
+}
+
+.scrollermenu {
+    overflow: -moz-scrollbars-none;
+}
+</style>
