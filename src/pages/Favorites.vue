@@ -21,7 +21,8 @@ onMounted(async () => {
 </template>
 <style scoped>
 .scrollermenu {
-  width: 100%; 
+  width: 100%;
+  height: 100dvh;
   overflow-y: scroll; 
 }
 .scrollermenu::-webkit-scrollbar {
