@@ -9,7 +9,7 @@ const emit = defineEmits(['openDrawer'])
 <template>
   <header class="Mesh flex justify-between border-b border-slate-100 px-10 py-8 flex-wrap">
     <router-link to="/">
-      <div class="flex items-center gap-4">
+      <div class="flex items-center gap-4 h-full">
         <img src="/logo.png" alt="Logo" class="w-10" />
         <div>
           <h2 class="text-xl font-bold uppercase">Vue Sneakers</h2>

@@ -68,7 +68,7 @@ provide('cart', {
     @create-order="createOrder"
     :button-disabled="cartButtonDisabled"
   />
-  <div class="bg-white w-4/5 m-auto rounded-xl shadow-xl mt-14 w-full">
+  <div class="bg-black w-4/5 m-auto rounded-xl shadow-xl pt-14 w-full">
     <Header :total-price="totalPrice" @open-drawer="openDrawer" />
     <div class="p-10">
       <router-view></router-view>
