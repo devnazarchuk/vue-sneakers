@@ -83,7 +83,7 @@ provide('cart', {
   />
   <div class="bg-white w-4/5 m-auto rounded-xl shadow-xl pt-2 w-full">
     <Header :total-price="totalPrice" @open-drawer="openDrawer" />
-    <div class="p-10 h-screen overflow-y-auto" style="min-height: 90vh">
+    <div class="p-10 h-full overflow-y-auto" style="min-height: 90vh">
       <router-view></router-view>
     </div>
   </div>
