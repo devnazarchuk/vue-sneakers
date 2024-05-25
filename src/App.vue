@@ -3,7 +3,7 @@ import { ref, provide, watch, computed } from 'vue'
 // import axios from 'axios'
 import Drawer from './components/Drawer.vue'
 import Header from './components/Header.vue'
-
+import Footer from './components/Footer.vue';
 /*Cart*(START)*/
 const cart = ref([])
 
@@ -67,6 +67,7 @@ provide('cart', {
     <div class="p-10 h-full overflow-y-auto" style="min-height: 90vh">
       <router-view></router-view>
     </div>
+    <Footer/>
   </div>
 </template>
 <style>

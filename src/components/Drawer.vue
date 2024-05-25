@@ -4,13 +4,12 @@ import { ref, inject , computed } from 'vue'
 import DrawerHead from './DrawerHead.vue'
 import CardItemList from './CardItemList.vue'
 import InfoBlock from './InfoBlock.vue'
-// import { computed } from 'vue'
 const props = defineProps({
   totalPrice: Number,
   vatPrice: Number,
 })
 
-const { cart, closeDrawer, openDrawer, addToCart, removeFromCart } = inject('cart')
+const { cart } = inject('cart')
 const isCreating = ref(false)
 const orderId = ref(null)
 const createOrder = async () => {
