@@ -18,6 +18,7 @@ onMounted(async () => {
     <CardList :items="orders" :hide-icons="true" class="scrollermenu" />
 </template>
 <style scoped>
+
 .scrollermenu {
   width: 100%;
   overflow-y: scroll;

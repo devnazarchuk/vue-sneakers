@@ -13,9 +13,9 @@ defineProps({
 const emit = defineEmits(['addToFavorite', 'addToCart'])
 </script>
 <template>
-  <div class="Mesh grid grid-cols-4 gap-5 " v-auto-animate>
+  <div class="Mesh grid grid-cols-4 gap-5" v-auto-animate>
     <Card
-      v-for="item in items.filter(item => item !== undefined)"
+      v-for="item in items.filter((item) => item !== undefined)"
       :key="item.id"
       :id="item.id"
       :title="item.title"
@@ -30,9 +30,9 @@ const emit = defineEmits(['addToFavorite', 'addToCart'])
   </div>
 </template>
 <style scoped>
-  .Mesh {
-    justify-content: center;
-  }
+.Mesh {
+  justify-content: center;
+}
 @media screen and (max-width: 1440px) {
   .Mesh {
     grid-template-columns: 1fr 1fr 1fr 1fr;
