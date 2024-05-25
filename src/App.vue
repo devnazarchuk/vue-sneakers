@@ -66,11 +66,11 @@ provide('cart', {
 <template>
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" href="/logo.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="icon" href="/public/favicon_logo/logo.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/public/favicon_logo/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/public/favicon_logo/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/public/favicon_logo/favicon-16x16.png" />
+    <link rel="manifest" href="/public/favicon_logo/site.webmanifest" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vue Sneakers</title>
   </head>
