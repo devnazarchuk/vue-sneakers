@@ -6,7 +6,7 @@ const orders = ref([])
 onMounted(async () => {
   try {
     const { data } = await axios.get('https://ea24319fe3196523.mokky.dev/orders')
-    orders.value = data.map((obj) => obj.item)
+    orders.value = data.flatMap(order => order.items)
     console.log(data)
   } catch (err) {
     console.log(err)
@@ -14,8 +14,8 @@ onMounted(async () => {
 })
 </script>
 <template>
-  <h1 class="text-3xl font-bold mb-8">My orders:</h1>
-  <CardList :items="orders" class="scrollermenu" />
+    <h1 class="text-3xl font-bold mb-8">My Orders:</h1>
+    <CardList :items="orders" :hide-icons="true" class="scrollermenu" />
 </template>
 <style scoped>
 .scrollermenu {

@@ -1,8 +1,13 @@
 <script setup>
+import { defineEmits, defineProps } from 'vue'
 import Card from './Card.vue'
 defineProps({
   items: Array,
-  isFavorites: Boolean
+  isFavorites: Boolean,
+  hideIcons: {
+    type: Boolean,
+    default: false
+  }
 })
 
 const emit = defineEmits(['addToFavorite', 'addToCart'])
@@ -20,6 +25,7 @@ const emit = defineEmits(['addToFavorite', 'addToCart'])
       :onClickAdd="isFavorites ? null : () => emit('addToCart', item)"
       :isFavorite="item.isFavorite"
       :isAdded="item.isAdded"
+      :hide-icons="hideIcons"
     />
   </div>
 </template>
