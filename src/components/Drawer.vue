@@ -35,7 +35,7 @@ const cartIsEmpty = computed(() => cart.value.length === 0)
 </script>
 <template>
   <div class="fixed top-0 left-0 w-full h-full bg-black z-10 opacity-70"></div>
-  <div class="bg-white w-96 h-full fixed top-0 right-0 z-20 p-8">
+  <div class="bg-white WrapperWidth h-full fixed top-0 right-0 z-20 p-8">
     <DrawerHead />
 
     <div v-if="!totalPrice|| orderId" class="flex h-full items-center">
@@ -79,6 +79,25 @@ const cartIsEmpty = computed(() => cart.value.length === 0)
   </div>
 </template>
 <style scoped>
+.WrapperWidth {
+  width: 25rem;
+}
+@media screen and (max-width: 768px) {
+  .WrapperWidth {
+    width: 50%;
+  }
+}
+@media screen and (max-width: 540px) {
+  .WrapperWidth {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 426px) {
+  .WrapperWidth {
+    width: 100%;
+  }
+  
+}
 .scrollermenu {
   width: 100%;
   height: 600px;
