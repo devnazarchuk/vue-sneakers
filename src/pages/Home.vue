@@ -107,20 +107,20 @@ watch(filters, fetchItems)
 </script>
 
 <template>
-  <div class="Mesh flex justify-between items-center flex-wrap items-baseline">
-    <h2 class="text-3xl font-bold mb-8 text-center">Sneakers for every occassion</h2>
+  <div class="flex justify-between items-center flex-wrap items-baseline">
+    <h2 class="text-3xl font-bold mb-8 text-center mx-auto">Sneakers for every occassion</h2>
 
-    <div class="flex gap-4 flex-wrap Mesh">
+    <div class="flex gap-4 flex-wrap mx-auto">
       <select
         @change="onChangeSelect"
-        class="py-2 px-3 border rounded-xl outline-none selectCustom"
+        class="py-2 px-3 border rounded-xl outline-none selectCustom mx-auto"
       >
         <option value="name">Filter by name</option>
         <option value="price">Filter by price(cheap)</option>
         <option value="-price">Filter by price(exspensive)</option>
       </select>
 
-      <div class="relative selectCustom">
+      <div class="relative selectCustom mx-auto">
         <img class="absolute left-4 top-3" src="/search.svg" />
         <input
           @input="onChangeSearchInput"
@@ -143,12 +143,5 @@ watch(filters, fetchItems)
   box-shadow: 1px 1px #ccc;
   border-radius: 0.75rem;
 }
-.Mesh {
-  justify-content: space-between;
-}
-@media screen and (max-width: 1024px) {
-  .Mesh {
-    justify-content: space-evenly;
-  }
-}
+
 </style>
