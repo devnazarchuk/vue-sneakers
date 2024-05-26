@@ -17,7 +17,7 @@ const emit = defineEmits(['openDrawer'])
         </div>
       </div></router-link
     >
-    <ul class="flex items-center gap-[5vw] mt-3 mx-auto flex-wrap">
+    <ul class="flex items-center gap-[5vw] mt-3 mx-auto flex-wrap justify-center">
       <router-link to="/">
       <li class="flex items-center gap-1 cursor-pointer text-gray-500 hover:text-black">
         <img src="/shop.svg" alt="Shop" />
