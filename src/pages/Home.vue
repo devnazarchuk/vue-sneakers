@@ -108,7 +108,7 @@ watch(filters, fetchItems)
 
 <template>
   <div class="flex justify-between items-center flex-wrap items-baseline">
-    <h2 class="text-3xl font-bold mb-8 text-center mx-auto">Sneakers for every occassion</h2>
+    <h2 class="text-3xl font-bold mb-8 text-center Mesh">Sneakers for every occassion</h2>
 
     <div class="flex gap-4 flex-wrap mx-auto">
       <select
@@ -143,5 +143,12 @@ watch(filters, fetchItems)
   box-shadow: 1px 1px #ccc;
   border-radius: 0.75rem;
 }
-
+.Mesh{
+  margin: 10px 0;
+}
+@media screen and (max-width: 1024px) {
+.Mesh{
+  margin: 10px auto;
+}
+}
 </style>
