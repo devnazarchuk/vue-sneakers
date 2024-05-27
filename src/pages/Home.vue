@@ -1,6 +1,7 @@
 <script setup>
 import { reactive, watch, ref, onMounted } from 'vue'
 import axios from 'axios'
+import debounce from 'lodash.debounce'
 import { inject } from 'vue'
 import CardList from '../components/CardList.vue'
 const { cart, addToCart, removeFromCart } = inject('cart')
@@ -20,9 +21,9 @@ const onClickAddPlus = (item) => {
 const onChangeSelect = (event) => {
   filters.sortBy = event.target.value
 }
-const onChangeSearchInput = (event) => {
+const onChangeSearchInput = debounce((event) => {
   filters.searchQuery = event.target.value
-}
+}, 200);
 const addToFavorite = async (item) => {
   try {
     if (!item.isFavorite) {
