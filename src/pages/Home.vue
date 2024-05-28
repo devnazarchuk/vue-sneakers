@@ -108,10 +108,10 @@ watch(filters, fetchItems)
 </script>
 
 <template>
-  <div class="flex justify-between items-center flex-wrap items-baseline">
+  <div class="flex justify-between items-center flex-wrap">
     <h2 class="text-3xl font-bold mb-8 text-center Mesh">Sneakers for every occassion</h2>
 
-    <div class="flex gap-4 flex-wrap mx-auto">
+    <div class="flex gap-4 flex-wrap Mesh">
       <select
         @change="onChangeSelect"
         class="py-2 px-3 border rounded-xl outline-none selectCustom mx-auto"
