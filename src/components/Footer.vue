@@ -4,21 +4,11 @@
     <p>© Copyright 2024</p>
     <p>Developed by Artemnchuk</p>
     <div class="contactUS">
-      <a href="https://www.facebook.com/artemnchuk"
-        ><img src="/public/facebook.svg" alt="facebook"
-      /></a>
-      <a href="https://www.twitter.com/artemnchuk"
-        ><img src="/public/twitter.svg" alt="twitter"
-      /></a>
-      <a href="https://www.instagram.com/artemnchuk"
-      > <img src="/public/instagram.svg" alt="" 
-      /></a>
-      <a href="https://www.linkedin.com/artemnchuk"
-        ><img src="/public/linkedin.svg" alt="linkedin"
-      /></a>
-      <a href="https://www.github.com/artemnchuk"
-      ><img src="/public/github.svg" alt="github" 
-      /></a>
+      <a href="https://www.facebook.com/artemnchuk"><img src="/facebook.svg" alt="facebook" /></a>
+      <a href="https://www.twitter.com/artemnchuk"><img src="/twitter.svg" alt="twitter" /></a>
+      <a href="https://www.instagram.com/artemnchuk"> <img src="/instagram.svg" alt="" /></a>
+      <a href="https://www.linkedin.com/artemnchuk"><img src="/linkedin.svg" alt="linkedin" /></a>
+      <a href="https://www.github.com/artemnchuk"><img src="/github.svg" alt="github" /></a>
     </div>
   </footer>
 </template>

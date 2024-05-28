@@ -3,16 +3,17 @@ import { ref, provide, watch, computed } from 'vue'
 // import axios from 'axios'
 import Drawer from './components/Drawer.vue'
 import Header from './components/Header.vue'
-import Footer from './components/Footer.vue';
+import Footer from './components/Footer.vue'
 /*Cart*(START)*/
 const cart = ref([])
 
 const isDrawerOpened = ref(false)
 
-const totalPrice = computed(() => 
-  cart.value.filter(item => item !== null && item !== undefined)
-            .reduce((acc, item) => acc + item.price, 0)
-);
+const totalPrice = computed(() =>
+  cart.value
+    .filter((item) => item !== null && item !== undefined)
+    .reduce((acc, item) => acc + item.price, 0)
+)
 const vatPrice = computed(() => Math.round(totalPrice.value * 5) / 100)
 
 const closeDrawer = () => {
@@ -49,25 +50,21 @@ provide('cart', {
 <template>
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" href="/public/favicon_logo/logo.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/public/favicon_logo/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/public/favicon_logo/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/public/favicon_logo/favicon-16x16.png" />
-    <link rel="manifest" href="/public/favicon_logo/site.webmanifest" />
+    <link rel="icon" href="/favicon_logo/logo.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_logo/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_logo/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_logo/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_logo/site.webmanifest" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vue Sneakers</title>
   </head>
-  <Drawer
-    v-if="isDrawerOpened"
-    :total-price="totalPrice"
-    :vat-price="vatPrice"
-  />
+  <Drawer v-if="isDrawerOpened" :total-price="totalPrice" :vat-price="vatPrice" />
   <div class="bg-white w-4/5 m-auto rounded-xl shadow-xl pt-2 w-full">
     <Header :total-price="totalPrice" @open-drawer="openDrawer" />
     <div class="p-10 h-full overflow-y-auto" style="min-height: 90vh">
       <router-view></router-view>
     </div>
-    <Footer/>
+    <Footer />
   </div>
 </template>
 <style>
